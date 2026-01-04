@@ -114,8 +114,10 @@ const selectLevel = (level) => {
   }, 50)
 }
 
-watch(() => props.selectedCategory, () => {
+watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
   selectedLevel.value = 'A'
+  // 立即滚动到页面顶部
+  window.scrollTo(0, 0)
 })
 </script>
 
