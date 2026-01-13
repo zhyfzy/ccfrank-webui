@@ -1,32 +1,50 @@
 <template>
   <div class="app">
+    <!-- 侧边栏覆盖层 -->
     <div 
       v-if="sidebarVisible" 
       class="sidebar-overlay"
       @click="toggleSidebar"
     ></div>
+    
+    <!-- 侧边栏 -->
     <Sidebar
       :selected-category="selectedCategory"
       :selected-sub-item="selectedSubItem"
       :visible="sidebarVisible"
+      :show-home-page="showHomePage"
       @select="handleSelect"
       @close="toggleSidebar"
+      @back-to-home="backToHome"
     />
+    
+    <!-- 首页 -->
+    <HomePage 
+      v-if="showHomePage"
+      @select="handleHomeSelect"
+      @toggle-sidebar="toggleSidebar"
+    />
+    
+    <!-- 内容页面 -->
     <ContentArea
+      v-else
       :selected-category="selectedCategory"
       :selected-sub-item="selectedSubItem"
       :data="data"
       @toggle-sidebar="toggleSidebar"
+      @back-to-home="backToHome"
     />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import HomePage from './components/HomePage.vue'
 import Sidebar from './components/Sidebar.vue'
 import ContentArea from './components/ContentArea.vue'
 import { categories, getSampleData } from './utils/dataParser.js'
 
+const showHomePage = ref(true)
 const selectedCategory = ref('')
 const selectedSubItem = ref('')
 const data = ref(getSampleData())
@@ -55,14 +73,21 @@ const handleSelect = ({ category, subItem }) => {
   }
 }
 
-// 初始化选择第一个分类
+const handleHomeSelect = ({ category, subItem }) => {
+  selectedCategory.value = category
+  selectedSubItem.value = subItem
+  showHomePage.value = false
+}
+
+const backToHome = () => {
+  showHomePage.value = true
+  window.scrollTo(0, 0)
+}
+
+// 初始化
 onMounted(() => {
   checkMobile()
   window.addEventListener('resize', checkMobile)
-  if (categories.length > 0) {
-    selectedCategory.value = categories[0].id
-    selectedSubItem.value = categories[0].subItems[0]
-  }
 })
 
 onUnmounted(() => {

@@ -4,6 +4,13 @@
       <h2>目录</h2>
       <button class="close-button" @click="$emit('close')">✕</button>
     </div>
+    <button 
+      v-if="!showHomePage"
+      class="back-home-button" 
+      @click="$emit('back-to-home')"
+    >
+      🏠 返回首页
+    </button>
     <div class="sidebar-content">
       <div
         v-for="category in categories"
@@ -46,10 +53,14 @@ const props = defineProps({
   visible: {
     type: Boolean,
     default: true
+  },
+  showHomePage: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emit = defineEmits(['select', 'close'])
+const emit = defineEmits(['select', 'close', 'back-to-home'])
 
 // 默认展开所有分类的二级目录
 const expandedCategories = ref(categories.map(cat => cat.id))
@@ -152,6 +163,30 @@ const selectItem = (categoryId, subItem) => {
   .close-button {
     display: block;
   }
+}
+
+.back-home-button {
+  width: calc(100% - 32px);
+  margin: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.back-home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.back-home-button:active {
+  transform: translateY(0);
 }
 
 .sidebar-content {
