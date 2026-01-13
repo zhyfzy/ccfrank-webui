@@ -30,7 +30,6 @@
           v-for="level in ['A', 'B', 'C']"
           :key="level"
           class="level-button"
-          :class="{ active: selectedLevel === level }"
           @click="selectLevel(level)"
         >
           {{ level }}类
@@ -43,7 +42,6 @@
         :key="level"
         :id="`level-${level}`"
         class="level-section"
-        :class="{ active: selectedLevel === level }"
       >
         <h2 class="level-title">{{ level }}类</h2>
         <div v-if="currentData && currentData[level] && currentData[level].length > 0" class="items-list">
@@ -272,8 +270,7 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
 
 .level-buttons {
   display: flex;
-  gap: 12px;
-  flex: 1;
+  gap: 10px;
 }
 
 @media (max-width: 767px) {
@@ -283,34 +280,28 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
 }
 
 .level-button {
-  padding: 10px 24px;
-  font-size: 16px;
+  padding: 6px 16px;
+  font-size: 14px;
   font-weight: 500;
-  border: 2px solid #e0e0e0;
+  border: 1px solid #d9d9d9;
   background-color: #fff;
   color: #666;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s;
-  flex: 1;
+  transition: all 0.2s;
 }
 
 @media (max-width: 767px) {
   .level-button {
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 5px 12px;
+    font-size: 13px;
   }
 }
 
 .level-button:hover {
   border-color: #1890ff;
   color: #1890ff;
-}
-
-.level-button.active {
-  background-color: #1890ff;
-  border-color: #1890ff;
-  color: #fff;
+  background-color: #f0f5ff;
 }
 
 .content-body {
