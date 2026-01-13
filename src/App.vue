@@ -38,18 +38,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import HomePage from './components/HomePage.vue'
 import Sidebar from './components/Sidebar.vue'
 import ContentArea from './components/ContentArea.vue'
 import { categories, getSampleData } from './utils/dataParser.js'
 
-const showHomePage = ref(true)
+const router = useRouter()
+const route = useRoute()
+
 const selectedCategory = ref('')
 const selectedSubItem = ref('')
 const data = ref(getSampleData())
 const sidebarVisible = ref(false)
 const isMobile = ref(false)
+
+// 根据路由判断是否显示首页
+const showHomePage = computed(() => route.path === '/')
 
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768
@@ -65,8 +71,8 @@ const toggleSidebar = () => {
 }
 
 const handleSelect = ({ category, subItem }) => {
-  selectedCategory.value = category
-  selectedSubItem.value = subItem
+  // 跳转到对应的路由
+  router.push(`/${category}/${encodeURIComponent(subItem)}`)
   // 移动端选择后自动关闭侧边栏
   if (isMobile.value) {
     sidebarVisible.value = false
@@ -74,20 +80,37 @@ const handleSelect = ({ category, subItem }) => {
 }
 
 const handleHomeSelect = ({ category, subItem }) => {
-  selectedCategory.value = category
-  selectedSubItem.value = subItem
-  showHomePage.value = false
+  // 跳转到对应的路由
+  router.push(`/${category}/${encodeURIComponent(subItem)}`)
 }
 
 const backToHome = () => {
-  showHomePage.value = true
+  router.push('/')
   window.scrollTo(0, 0)
 }
+
+// 监听路由变化，更新选中的分类和子项
+watch(
+  () => route.params,
+  (params) => {
+    if (params.category && params.subItem) {
+      selectedCategory.value = params.category
+      selectedSubItem.value = decodeURIComponent(params.subItem)
+    }
+  },
+  { immediate: true }
+)
 
 // 初始化
 onMounted(() => {
   checkMobile()
   window.addEventListener('resize', checkMobile)
+  
+  // 如果当前路由有参数，更新选中状态
+  if (route.params.category && route.params.subItem) {
+    selectedCategory.value = route.params.category
+    selectedSubItem.value = decodeURIComponent(route.params.subItem)
+  }
 })
 
 onUnmounted(() => {
