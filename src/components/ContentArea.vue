@@ -270,38 +270,40 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
 
 .level-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 @media (max-width: 767px) {
   .level-buttons {
-    gap: 8px;
+    gap: 10px;
   }
 }
 
 .level-button {
-  padding: 6px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  border: 1px solid #d9d9d9;
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid #1890ff;
   background-color: #fff;
-  color: #666;
-  border-radius: 4px;
+  color: #1890ff;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.1);
 }
 
 @media (max-width: 767px) {
   .level-button {
-    padding: 5px 12px;
-    font-size: 13px;
+    padding: 7px 16px;
+    font-size: 14px;
   }
 }
 
 .level-button:hover {
-  border-color: #1890ff;
-  color: #1890ff;
-  background-color: #f0f5ff;
+  background-color: #1890ff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(24, 144, 255, 0.3);
 }
 
 .content-body {
