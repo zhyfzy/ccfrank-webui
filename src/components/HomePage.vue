@@ -145,9 +145,8 @@ const handleSelect = (categoryId, subItem) => {
     padding: 15px 20px;
   }
   
-  .github-link svg {
-    width: 24px;
-    height: 24px;
+  .github-link {
+    display: none;
   }
 }
 

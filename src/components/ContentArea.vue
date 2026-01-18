@@ -259,6 +259,10 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
     font-size: 14px;
   }
   
+  .github-link {
+    display: none;
+  }
+  
   .content-header {
     padding: 15px 20px;
   }
