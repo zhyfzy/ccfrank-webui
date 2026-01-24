@@ -39,6 +39,7 @@ export const thcplMapping = {
   'CLUSTER': 'B',
   'ASP-DAC': 'B',
   'ISLPED': 'B',
+  'IEEE CLOUD': 'B',  // IEEE International Conference on Cloud Computing
   'RTSS': 'B',
   'ICCD': 'B',
   'ISCAS': 'B',
@@ -100,14 +101,18 @@ export const thcplMapping = {
   
   // B类期刊
   'TWC': 'B',
+  'Wireless Networks': 'B',  // Wireless Networks (无缩写)
   'TOSN': 'B',
+  'JNCA': 'B',  // Journal of Network and Computer Applications
   'CN': 'B',
+  'Ad Hoc Networks': 'B',  // Ad Hoc Networks (无缩写)
   'TNSM': 'B',
   'CC (Net)': 'B',  // Computer Communications (网络期刊)
   'MONET': 'B',
   'TOMCCAP': 'B',
   'TOIT': 'B',
   'TVT': 'B',
+  'IOT': 'B',  // IEEE Internet of Things Journal
   
   // 网络与信息安全（Network and Information Security）
   // A类会议
@@ -146,9 +151,11 @@ export const thcplMapping = {
   
   // A类期刊
   'TIFS': 'A',
+  'Journal of Cryptology': 'A',  // Journal of Cryptology (无缩写)
   'TDSC': 'A',
   
   // B类期刊
+  'Computers & Security': 'B',  // Computers & Security (无缩写)
   'JCS': 'B',
   'TOPS': 'B',
   
@@ -164,7 +171,7 @@ export const thcplMapping = {
   
   // B类会议
   'SAT': 'B',
-  'CADE/IJCAR': 'B',
+  'International Conference on Automated Deduction/International Joint Conference on Automated Reasoning': 'B',  // CADE/IJCAR (无缩写，使用全名)
   'SoCG': 'B',
   'CONCUR': 'B',
   'STACS': 'B',
@@ -291,6 +298,8 @@ export const thcplMapping = {
   'AEI': 'B',
   'IJIS': 'B',
   'TWEB': 'B',
+  'Information Sciences': 'B',  // Information Sciences (无缩写)
+  'GeoInformatica': 'B',  // GeoInformatica (无缩写)
   'DKE': 'B',
   
   // 人工智能与模式识别（Artificial Intelligence and Pattern Recognition）
@@ -338,17 +347,29 @@ export const thcplMapping = {
   // B类期刊
   'TEC': 'B',
   'TNNLS': 'B',
+  'IEEE Transactions on Cybernetics': 'B',  // IEEE Transactions on Cybernetics (无缩写)
   'TFS': 'B',
   'PR': 'B',
   'TAC': 'B',
   'JBI': 'B',
+  'Neural Networks': 'B',  // Neural Networks (无缩写)
+  'KBS': 'B',  // Knowledge-Based Systems
   'PRL': 'B',
   'JAIR': 'B',
   'CVIU': 'B',
   'EAAI': 'B',
+  'IJNS': 'B',  // International Journal of Neural Systems
+  'Neurocomputing': 'B',  // Neurocomputing (无缩写)
+  'Evolutionary Computation': 'B',  // Evolutionary Computation (无缩写)
+  'Computational Linguistics': 'B',  // Computational Linguistics (无缩写)
+  'Machine Learning': 'B',  // Machine Learning (无缩写)
+  'IVC': 'B',  // Image and Vision Computing
+  'Journal of Automated Reasoning': 'B',  // Journal of Automated Reasoning (无缩写)
   'IJAR': 'B',
   'TG': 'B',
   'JSLHR': 'B',
+  'Neural Computation': 'B',  // Neural Computation (无缩写)
+  'Applied Intelligence': 'B',  // Applied Intelligence (无缩写)
   'TACL': 'B',
   
   // 计算机图形学与多媒体（Computer Graphics and Multimedia）
@@ -382,6 +403,7 @@ export const thcplMapping = {
   'CAD': 'A',
   
   // B类期刊
+  'Signal Processing': 'B',  // Signal Processing (无缩写)
   'TCSVT': 'B',
   'SIIMS': 'B',
   'CG': 'B',
@@ -410,6 +432,7 @@ export const thcplMapping = {
   
   // B类期刊
   'UMUAI': 'B',
+  'IEEE Transactions on Human-Machine Systems': 'B',  // IEEE Transactions on Human-Machine Systems (无缩写)
   'HCI': 'B',
   'PMC': 'B',
   'IJHCI': 'B',
@@ -434,12 +457,15 @@ export const thcplMapping = {
   
   // B类期刊
   'TMI': 'B',
+  'Briefings in Bioinformatics': 'B',  // Briefings in Bioinformatics (无缩写)
   'TITS': 'B',
   'TGARS': 'B',
   'TASAE': 'B',
+  'Bioinformatics': 'B',  // Bioinformatics (无缩写)
   'JAMIA': 'B',
   'JBHI': 'B',
   'TBD': 'B',
+  'BMC Bioinformatics': 'B',  // BMC Bioinformatics (无缩写)
   'GRSL': 'B',
   'TCBB': 'B',
   'JCST': 'B'

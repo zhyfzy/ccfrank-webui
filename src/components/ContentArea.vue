@@ -55,6 +55,9 @@
               <span v-if="item.thcpl" class="thcpl-badge" :class="`thcpl-${item.thcpl}`">
                 TH-CPL {{ item.thcpl }}
               </span>
+              <span v-if="item.cas" class="cas-badge" :class="`cas-${item.cas}`">
+                中科院{{ item.cas }}区
+              </span>
             </div>
             <div v-if="item.fullName" class="item-full-name" :class="{ 'no-short-name': !item.name }">{{ item.fullName }}</div>
             <div v-if="item.url" class="item-url">
@@ -436,6 +439,38 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
 .thcpl-B {
   background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
   box-shadow: 0 2px 4px rgba(149, 117, 205, 0.3);
+}
+
+.cas-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.cas-1 {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  box-shadow: 0 2px 4px rgba(46, 125, 50, 0.3);
+}
+
+.cas-2 {
+  background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+  box-shadow: 0 2px 4px rgba(67, 160, 71, 0.3);
+}
+
+.cas-3 {
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  box-shadow: 0 2px 4px rgba(102, 187, 106, 0.3);
+}
+
+.cas-4 {
+  background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+  box-shadow: 0 2px 4px rgba(129, 199, 132, 0.3);
 }
 
 .item-full-name.no-short-name {

@@ -1,0 +1,242 @@
+// 中科院分区数据映射
+// 根据《2025年中国科学院文献情报中心期刊分区表升级版》整理
+// 注意：中科院分区主要针对期刊（Journal），不包括会议
+// 数据来源：附件2-2025年中国科学院文献情报中心期刊分区表升级版(小类学科）.csv
+// 匹配日期：2026-01-24
+// 匹配数量：222个期刊（1区:23, 2区:52, 3区:65, 4区:82）
+// 注：包含18个使用fullName作为key的无缩写期刊
+
+export const casMapping = {
+  'AEI': '1',  // Advanced Engineering Informatics
+  'DSE': '1',  // Data Science and Engineering
+  'DSS': '1',  // Decision Support Systems
+  'JSAC': '1',  // IEEE Journal on Selected Areas in Communications
+  'PR': '1',  // Pattern Recognition
+  'Proc. IEEE': '1',  // Proceedings of the IEEE
+  'SCIS': '1',  // Science China Information Sciences
+  'TCSVT': '1',  // IEEE Transactions on Circuits and Systems for Video Technology
+  'TEC': '1',  // IEEE Transactions on Evolutionary Computation
+  'TFS': '1',  // IEEE Transactions on Fuzzy Systems
+  'TIFS': '1',  // IEEE Transactions on Information Forensics and Security
+  'TII': '1',  // IEEE Transactions on Industrial Informatics
+  'TIP': '1',  // IEEE Transactions on Image Processing
+  'TMC': '1',  // IEEE Transactions on Mobile Computing
+  'TMI': '1',  // IEEE Transactions on Medical Imaging
+  'TMM': '1',  // IEEE Transactions on Multimedia
+  'TOG': '1',  // ACM Transactions on Graphics
+  'TOIS': '1',  // ACM Transactions on Information Systems
+  'TOSEM': '1',  // ACM Transactions on Software Engineering and Methodology
+  'TPAMI': '1',  // IEEE Transactions on Pattern Analysis and Machine Intelligence
+  'TSE': '1',  // IEEE Transactions on Software Engineering
+  'TVCG': '1',  // IEEE Transactions on Visualization and Computer Graphics
+  'TWC': '1',  // IEEE Transactions on Wireless Communications
+  'AI': '2',  // Artificial Intelligence
+  'AIM': '2',  // Artificial Intelligence in Medicine
+  'Computers & Security': '2',  // COMPUTERS & SECURITY (无缩写)
+  'Information Sciences': '2',  // INFORMATION SCIENCES (无缩写)
+  'CVM': '2',  // Computational Visual Media
+  'CVMJ': '2',  // Computational Visual Media
+  'Cognition': '2',  // Cognition
+  'EAAI': '2',  // Engineering Applications of Artificial Intelligence
+  'ESE': '2',  // Empirical Software Engineering
+  'ESWA': '2',  // Expert Systems with Applications
+  'FCS': '2',  // Frontiers of Computer Science
+  'HCI': '2',  // Human-Computer Interaction
+  'I&M': '2',  // Information & Management
+  'IJCV': '2',  // International Journal of Computer Vision
+  'IJGIS': '2',  // International Journal of Geographical Information Science
+  'IJHCS': '2',  // International Journal of Human-Computer Studies
+  'IJNS': '2',  // International Journal of Neural Systems
+  'IJSWIS': '2',  // International Journal on Semantic Web and Information Systems
+  'IOT': '2',  // IEEE Internet of Things Journal
+  'IST': '2',  // Information and Software Technology
+  'JACM': '2',  // Journal of the ACM
+  'JAMIA': '2',  // Journal of the American Medical Informatics Association
+  'JBHI': '2',  // IEEE Journal of Biomedical and Health Informatics
+  'JCOMPLEXITY': '2',  // Journal of Complexity
+  'JFP': '2',  // Journal of Functional Programming
+  'JNCA': '2',  // Journal of Network and Computer Applications
+  'JSS': '2',  // Journal of Systems and Software
+  'KBS': '2',  // Knowledge-Based Systems
+  'SICOMP': '2',  // SIAM Journal on Computing
+  'SIDMA': '2',  // SIAM Journal on Discrete Mathematics
+  'TAC': '2',  // IEEE Transactions on Affective Computing
+  'TACL': '2',  // Transactions of the Association for Computational Linguistics
+  'TASLP': '2',  // IEEE/ACM Transactions on Audio, Speech and Language Processing
+  'TASAE': '2',  // IEEE Transactions on Automation Science and Engineering
+  'TBD': '2',  // IEEE Transactions on Big Data
+  'TC': '2',  // IEEE Transactions on Computers
+  'TCASI': '2',  // IEEE Transactions on Circuits and Systems I: Regular Papers (I-REGULAR PAPERS)
+  'TCC (J)': '2',  // IEEE Transactions on Cloud Computing
+  'TCOM': '2',  // IEEE Transactions on Communications
+  'TDSC': '2',  // IEEE Transactions on Dependable and Secure Computing
+  'TGARS': '2',  // IEEE Transactions on Geoscience and Remote Sensing
+  'TITS': '2',  // IEEE Transactions on Intelligent Transportation Systems
+  'TKDE': '2',  // IEEE Transactions on Knowledge and Data Engineering
+  'TNNLS': '2',  // IEEE Transactions on Neural Networks and learning systems
+  'TNSM': '2',  // IEEE Transactions on Network and Service Management
+  'TOCHI': '2',  // ACM Transactions on Computer-Human Interaction
+  'TODS': '2',  // ACM Transactions on Database Systems
+  'TOPLAS': '2',  // ACM Transactions on Programming Languages and Systems
+  'TPDS': '2',  // IEEE Transactions on Parallel and Distributed Systems
+  'TR': '2',  // IEEE Transactions on Robotics
+  'TRETS': '2',  // ACM Transactions on Reconfigurable Technology and Systems
+  'TSC': '2',  // IEEE Transactions on Services Computing
+  'AAMAS (J)': '3',  // Autonomous Agents and Multi-Agent Systems
+  'Ad Hoc Networks': '3',  // Ad Hoc Networks (无缩写)
+  'APAL': '3',  // Annals of Pure and Applied Logic
+  'Computational Linguistics': '3',  // COMPUTATIONAL LINGUISTICS (无缩写)
+  'Designs, Codes and Cryptography': '3',  // DESIGNS CODES AND CRYPTOGRAPHY (无缩写)
+  'Evolutionary Computation': '3',  // EVOLUTIONARY COMPUTATION (无缩写)
+  'Journal of Cryptology': '3',  // JOURNAL OF CRYPTOLOGY (无缩写)
+  'Parallel Computing': '3',  // PARALLEL COMPUTING (无缩写)
+  'CAD': '3',  // Computer-Aided Design
+  'CC (Net)': '3',  // Computer Communications
+  'CLSR': '3',  // Computer Law & Security Review
+  'CN': '3',  // Computer Networks
+  'CVIU': '3',  // Computer Vision and Image Understanding
+  'DAM': '3',  // Discrete Applied Mathematics
+  'DC': '3',  // Distributed Computing
+  'DKE': '3',  // Data & Knowledge Engineering
+  'EJIS': '3',  // European Journal of Information Systems
+  'FAC': '3',  // Formal Aspects of Computing
+  'FITEE': '3',  // Frontiers of Information Technology & Electronic Engineering
+  'GM': '3',  // Graphical Models
+  'IJAR': '3',  // International Journal of Approximate Reasoning
+  'IJDAR': '3',  // International Journal on Document Analysis and Recognition
+  'IJHCI': '3',  // International Journal of Human-Computer Interaction
+  'IJIS': '3',  // International Journal of Intelligent Systems
+  'INFORMS': '3',  // INFORMS Journal on Computing
+  'IS': '3',  // Information Systems
+  'IVC': '3',  // Image and Vision Computing
+  'JAIR': '3',  // Journal of Artificial Intelligence Research
+  'JASIST': '3',  // Journal of the Association for Information Science and Technology
+  'JBI': '3',  // Journal of Biomedical Informatics
+  'JCSS': '3',  // Journal of Computer and System Sciences
+  'JGC': '3',  // Journal of Grid computing
+  'JISA': '3',  // Journal of Information Security and Applications
+  'JPDC': '3',  // Journal of Parallel and Distributed Computing
+  'JSLHR': '3',  // Journal of Speech, Language, and Hearing Research
+  'JWS': '3',  // Journal of Web Semantics
+  'LOGCOM': '3',  // Journal of Logic and Computation
+  'PRL': '3',  // Pattern Recognition Letters
+  'SCP': '3',  // Science of Computer Programming
+  'SIGPRO': '3',  // Signal Processing
+  'SPECOM': '3',  // Speech Communication
+  'SPL': '3',  // IEEE Signal Processing Letters
+  'SoSyM': '3',  // Software and Systems Modeling
+  'TACO': '3',  // ACM Transactions on Architecture and Code Optimization
+  'TALG': '3',  // ACM Transactions on Algorithms
+  'TAP': '3',  // ACM Transactions on Applied Perception
+  'TCAD': '3',  // IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems
+  'TCSS': '3',  // IEEE Transactions on Computational Social Systems
+  'TECS': '3',  // ACM Transactions on Embedded Computing Systems
+  'TG': '3',  // IEEE Transactions on Games
+  'TIT': '3',  // IEEE Transactions on Information Theory
+  'TKDD': '3',  // ACM Transactions on Knowledge Discovery from Data
+  'TOCE': '3',  // ACM Transactions on Computing Education
+  'TOCS': '3',  // ACM Transactions on Computer Systems
+  'TOMM': '3',  // ACM Transactions on Multimedia Computing, Communications and Applications
+  'TOMS': '3',  // ACM Transactions on Mathematical Software
+  'TON': '3',  // IEEE/ACM Transactions on Networking
+  'TOPS': '3',  // ACM Transactions on Privacy and Security
+  'TOS': '3',  // ACM Transactions on Storage
+  'TPLP': '3',  // Theory and Practice of Logic Programming
+  'TSUSC': '3',  // IEEE Transactions on Sustainable Computing
+  'TVLSI': '3',  // IEEE Transactions on Very Large Scale Integration (VLSI) Systems
+  'UMUAI': '3',  // User Modeling and User-Adapted Interaction
+  'VLDBJ': '3',  // The VLDB Journal
+  'VR': '3',  // IEEE Virtual Reality
+  'ACTA': '4',  // Acta Informatica
+  'ASE (J)': '4',  // Automated Software Engineering
+  'Cybersecurity': '4',  // Cybersecurity (无缩写)
+  'EURASIP Journal on Information Security': '4',  // EURASIP Journal on Information Security (无缩写)
+  'GeoInformatica': '4',  // GEOINFORMATICA (无缩写)
+  'IET Communications': '4',  // IET Communications (无缩写)
+  'IET Information Security': '4',  // IET Information Security (无缩写)
+  'Journal of Software: Evolution and Process': '4',  // Journal of Software-Evolution and Process (无缩写)
+  'Networks': '4',  // NETWORKS (无缩写)
+  'Performance Evaluation: An International Journal': '4',  // PERFORMANCE EVALUATION (无缩写)
+  'Theory of Computing Systems': '4',  // THEORY OF COMPUTING SYSTEMS (无缩写)
+  'Wireless Networks': '4',  // WIRELESS NETWORKS (无缩写)
+  'Algorithmica': '4',  // Algorithmica
+  'BIT': '4',  // Behaviour & Information Technology
+  'CAGD': '4',  // Computer Aided Geometric Design
+  'CC (Theory)': '4',  // Computational Complexity
+  'CCF-THPC': '4',  // CCF Transactions on High Performance Computing
+  'CGF': '4',  // Computer Graphics Forum
+  'DCG': '4',  // Discrete & Computational Geometry
+  'DMKD': '4',  // Data Mining and Knowledge Discovery
+  'DPD': '4',  // Distributed and Parallel Databases
+  'FMSD': '4',  // Formal Methods in System Design
+  'FUIN': '4',  // Fundamenta Informaticae
+  'IANDC': '4',  // Information and Computation
+  'IDA': '4',  // Intelligent Data Analysis
+  'IET-CVI': '4',  // IET Computer Vision
+  'IET-IPR': '4',  // IET Image Processing
+  'IETS': '4',  // IET Software
+  'IJCIA': '4',  // International Journal of Computational Intelligence and Applications
+  'IJCIS': '4',  // International Journal of Cooperative Information Systems
+  'IJISP': '4',  // International Journal of Information Security and Privacy
+  'IJKM': '4',  // International Journal of Knowledge Management
+  'IJPRAI': '4',  // International Journal of Pattern Recognition and Artificial Intelligence
+  'IJSEKE': '4',  // International Journal of Software Engineering and Knowledge Engineering
+  'IJUFKS': '4',  // International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems
+  'IMCS': '4',  // Information and Computer Security
+  'Integration': '4',  // Integration, the VLSI Journal
+  'IPL': '4',  // Information Processing Letters
+  'IR': '4',  // Information Retrieval Journal
+  'IWC': '4',  // Interacting with Computers
+  'JCIS': '4',  // Journal of Computer Information Systems
+  'JCS': '4',  // Journal of Computer Security
+  'JCST': '4',  // Journal of Computer Science and Technology
+  'JDM': '4',  // Journal of Database Management
+  'JETC': '4',  // ACM Journal on Emerging Technologies in Computing Systems
+  'JETTA': '4',  // Journal of Electronic Testing-Theory and Applications
+  'JGITM': '4',  // Journal of Global Information Technology Management
+  'JGO': '4',  // Journal of Global Optimization
+  'JIIS': '4',  // Journal of Intelligent Information Systems
+  'JLAMP': '4',  // Journal of Logical and Algebraic Methods in Programming
+  'JMLR': '4',  // Journal of Machine Learning Research
+  'JSC': '4',  // Journal of Symbolic Computation
+  'JVCIR': '4',  // Journal of Visual Communication and Image Representation
+  'JWE': '4',  // Journal of Web Engineering
+  'KAIS': '4',  // Knowledge and Information Systems
+  'LMCS': '4',  // Logical Methods in Computer Science
+  'MICPRO': '4',  // Microprocessors and Microsystems: Embedded Hardware-Design (MICROPROCESSORS AND MICROSYSTEMS)
+  'MS': '4',  // Multimedia Systems
+  'MSCS': '4',  // Mathematical Structures in Computer Science
+  'NLE': '4',  // Natural Language Engineering
+  'NPL': '4',  // Neural Processing Letters
+  'PAA': '4',  // Pattern Analysis and Applications
+  'PMC': '4',  // Pervasive and Mobile Computing
+  'PPNA': '4',  // Peer-to-Peer Networking and Applications
+  'RE (J)': '4',  // Requirements Engineering
+  'RTS': '4',  // Real-Time Systems
+  'SIIMS': '4',  // SIAM Journal on Imaging Sciences
+  'SOCA': '4',  // Service Oriented Computing and Applications
+  'SQJ': '4',  // Software Quality Journal
+  'TAAS': '4',  // ACM Transactions on Autonomous and Adaptive Systems
+  'TALLIP': '4',  // ACM Transactions on Asian and Low-Resource Language Information Processing
+  'TCBB': '4',  // IEEE/ACM Transactions on Computational Biology and Bioinformatics
+  'TCPS': '4',  // ACM Transactions on Cyber-Physical Systems
+  'TCS': '4',  // Theoretical Computer Science
+  'TIIS': '4',  // ACM Transactions on Interactive Intelligent Systems
+  'TJSC': '4',  // The Journal of Supercomputing (JOURNAL OF SUPERCOMPUTING)
+  'TOCL': '4',  // ACM Transactions on Computational Logic
+  'TODAES': '4',  // ACM Transactions on Design Automation of Electronic Systems
+  'TOIT': '4',  // ACM Transactions on Internet Technology
+  'TOSN': '4',  // ACM Transactions on Sensor Networks
+  'TWEB': '4',  // ACM Transactions on the Web
+  'WI': '4',  // Web Intelligence
+}
+
+/**
+ * 获取期刊的中科院分区
+ * @param {string} name - 期刊的缩写名称
+ * @returns {string|null} - 返回'1'/'2'/'3'/'4'，如果不在列表中则返回null
+ */
+export function getCasPartition(name) {
+  if (!name) return null
+  return casMapping[name] || null
+}

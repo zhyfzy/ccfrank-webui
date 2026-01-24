@@ -2,6 +2,7 @@
 // 根据《中国计算机学会推荐国际学术会议和期刊目录-2022》填充
 
 import { getThcplLevel } from './thcplData.js'
+import { getCasPartition } from './casData.js'
 
 export const categories = [
   { id: 'architecture', name: '计算机体系结构', subItems: ['会议', '期刊'] },
@@ -860,16 +861,30 @@ export function getSampleData() {
     }
   }
   
-  // 遍历所有分类和类型，为每个条目添加thcpl字段
+  // 遍历所有分类和类型，为每个条目添加thcpl和cas字段
   Object.keys(data).forEach(categoryKey => {
     const category = data[categoryKey]
     ;['conference', 'journal'].forEach(type => {
       ;['A', 'B', 'C'].forEach(level => {
         if (category[type] && category[type][level]) {
           category[type][level].forEach(item => {
+            // 如果name为空，将其设置为fullName
+            if (!item.name) {
+              item.name = item.fullName
+            }
+            
+            // 添加TH-CPL等级（会议和期刊都可能有）
             const thcplLevel = getThcplLevel(item.name)
             if (thcplLevel) {
               item.thcpl = thcplLevel
+            }
+            
+            // 添加中科院分区（仅期刊）
+            if (type === 'journal') {
+              const casPartition = getCasPartition(item.name)
+              if (casPartition) {
+                item.cas = casPartition
+              }
             }
           })
         }
