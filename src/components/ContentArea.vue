@@ -50,7 +50,12 @@
             :key="index"
             class="item-card"
           >
-            <div v-if="item.name" class="item-name">{{ item.name }}</div>
+            <div v-if="item.name" class="item-name">
+              {{ item.name }}
+              <span v-if="item.thcpl" class="thcpl-badge" :class="`thcpl-${item.thcpl}`">
+                TH-CPL {{ item.thcpl }}
+              </span>
+            </div>
             <div v-if="item.fullName" class="item-full-name" :class="{ 'no-short-name': !item.name }">{{ item.fullName }}</div>
             <div v-if="item.url" class="item-url">
               <a :href="item.url" target="_blank" rel="noopener noreferrer" class="url-link">
@@ -405,6 +410,32 @@ watch([() => props.selectedCategory, () => props.selectedSubItem], () => {
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.thcpl-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.thcpl-A {
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  box-shadow: 0 2px 4px rgba(155, 89, 182, 0.3);
+}
+
+.thcpl-B {
+  background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+  box-shadow: 0 2px 4px rgba(149, 117, 205, 0.3);
 }
 
 .item-full-name.no-short-name {

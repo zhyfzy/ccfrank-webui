@@ -1,6 +1,8 @@
 // 数据解析工具
 // 根据《中国计算机学会推荐国际学术会议和期刊目录-2022》填充
 
+import { getThcplLevel } from './thcplData.js'
+
 export const categories = [
   { id: 'architecture', name: '计算机体系结构', subItems: ['会议', '期刊'] },
   { id: 'network', name: '计算机网络', subItems: ['会议', '期刊'] },
@@ -16,7 +18,7 @@ export const categories = [
 
 // 获取完整数据（根据PDF内容填充）
 export function getSampleData() {
-  return {
+  const data = {
     // 计算机体系结构/并行与分布计算/存储系统
     architecture: {
       journal: {
@@ -44,7 +46,7 @@ export function getSampleData() {
           { name: '', fullName: 'Concurrency and Computation: Practice and Experience', url: 'https://dblp.uni-trier.de/db/journals/concurrency/index.html', level: 'C' },
           { name: 'DC', fullName: 'Distributed Computing', url: 'https://dblp.uni-trier.de/db/journals/dc/index.html', level: 'C' },
           { name: 'FGCS', fullName: 'Future Generation Computer Systems', url: 'https://dblp.uni-trier.de/db/journals/fgcs/index.html', level: 'C' },
-          { name: 'TCC', fullName: 'IEEE Transactions on Cloud Computing', url: 'https://dblp.uni-trier.de/db/journals/tcc/index.html', level: 'C' },
+          { name: 'TCC (J)', fullName: 'IEEE Transactions on Cloud Computing', url: 'https://dblp.uni-trier.de/db/journals/tcc/index.html', level: 'C' },
           { name: 'Integration', fullName: 'Integration, the VLSI Journal', url: 'https://dblp.uni-trier.de/db/journals/integration/index.html', level: 'C' },
           { name: 'JETTA', fullName: 'Journal of Electronic Testing-Theory and Applications', url: 'https://dblp.org/db/journals/et/index.html', level: 'C' },
           { name: 'JGC', fullName: 'Journal of Grid computing', url: 'https://dblp.uni-trier.de/db/journals/grid/index.html', level: 'C' },
@@ -145,7 +147,7 @@ export function getSampleData() {
         ],
         C: [
           { name: '', fullName: 'Ad Hoc Networks', url: 'https://dblp.uni-trier.de/db/journals/adhoc/index.html', level: 'C' },
-          { name: 'CC', fullName: 'Computer Communications', url: 'https://dblp.uni-trier.de/db/journals/comcom/index.html', level: 'C' },
+          { name: 'CC (Net)', fullName: 'Computer Communications', url: 'https://dblp.uni-trier.de/db/journals/comcom/index.html', level: 'C' },
           { name: 'TNSM', fullName: 'IEEE Transactions on Network and Service Management', url: 'https://dblp.uni-trier.de/db/journals/tnsm/index.html', level: 'C' },
           { name: '', fullName: 'IET Communications', url: 'https://dblp.uni-trier.de/db/journals/iet-com/index.html', level: 'C' },
           { name: 'JNCA', fullName: 'Journal of Network and Computer Applications', url: 'https://dblp.uni-trier.de/db/journals/jnca/index.html', level: 'C' },
@@ -288,14 +290,14 @@ export function getSampleData() {
           { name: 'TSC', fullName: 'IEEE Transactions on Services Computing', url: 'https://dblp.uni-trier.de/db/journals/tsc/index.html', level: 'A' }
         ],
         B: [
-          { name: 'ASE', fullName: 'Automated Software Engineering', url: 'https://dblp.uni-trier.de/db/journals/ase/index.html', level: 'B' },
+          { name: 'ASE (J)', fullName: 'Automated Software Engineering', url: 'https://dblp.uni-trier.de/db/journals/ase/index.html', level: 'B' },
           { name: 'ESE', fullName: 'Empirical Software Engineering', url: 'https://dblp.uni-trier.de/db/journals/ese/index.html', level: 'B' },
           { name: 'IETS', fullName: 'IET Software', url: 'https://dblp.uni-trier.de/db/journals/iet-sen/index.html', level: 'B' },
           { name: 'IST', fullName: 'Information and Software Technology', url: 'https://dblp.uni-trier.de/db/journals/infsof/index.html', level: 'B' },
           { name: 'JFP', fullName: 'Journal of Functional Programming', url: 'https://dblp.uni-trier.de/db/journals/jfp/index.html', level: 'B' },
           { name: '', fullName: 'Journal of Software: Evolution and Process', url: 'https://dblp.uni-trier.de/db/journals/smr/index.html', level: 'B' },
           { name: 'JSS', fullName: 'Journal of Systems and Software', url: 'https://dblp.uni-trier.de/db/journals/jss/index.html', level: 'B' },
-          { name: 'RE', fullName: 'Requirements Engineering', url: 'https://dblp.uni-trier.de/db/journals/re/index.html', level: 'B' },
+          { name: 'RE (J)', fullName: 'Requirements Engineering', url: 'https://dblp.uni-trier.de/db/journals/re/index.html', level: 'B' },
           { name: 'SCP', fullName: 'Science of Computer Programming', url: 'https://dblp.uni-trier.de/db/journals/scp/index.html', level: 'B' },
           { name: 'SoSyM', fullName: 'Software and Systems Modeling', url: 'https://dblp.uni-trier.de/db/journals/sosym/index.html', level: 'B' },
           { name: 'STVR', fullName: 'Software Testing, Verification and Reliability', url: 'https://dblp.uni-trier.de/db/journals/stvr/index.html', level: 'B' },
@@ -472,7 +474,7 @@ export function getSampleData() {
           { name: 'TOCL', fullName: 'ACM Transactions on Computational Logic', url: 'https://dblp.uni-trier.de/db/journals/tocl/index.html', level: 'B' },
           { name: 'TOMS', fullName: 'ACM Transactions on Mathematical Software', url: 'https://dblp.uni-trier.de/db/journals/toms/index.html', level: 'B' },
           { name: 'Algorithmica', fullName: 'Algorithmica', url: 'https://dblp.uni-trier.de/db/journals/algorithmica/index.html', level: 'B' },
-          { name: 'CC', fullName: 'Computational Complexity', url: 'https://dblp.uni-trier.de/db/journals/cc/index.html', level: 'B' },
+          { name: 'CC (Theory)', fullName: 'Computational Complexity', url: 'https://dblp.uni-trier.de/db/journals/cc/index.html', level: 'B' },
           { name: 'FAC', fullName: 'Formal Aspects of Computing', url: 'https://dblp.uni-trier.de/db/journals/fac/index.html', level: 'B' },
           { name: 'FMSD', fullName: 'Formal Methods in System Design', url: 'https://dblp.uni-trier.de/db/journals/fmsd/index.html', level: 'B' },
           { name: 'INFORMS', fullName: 'INFORMS Journal on Computing', url: 'https://dblp.uni-trier.de/db/journals/informs/index.html', level: 'B' },
@@ -620,7 +622,7 @@ export function getSampleData() {
         B: [
           { name: 'TAP', fullName: 'ACM Transactions on Applied Perception', url: 'https://dblp.uni-trier.de/db/journals/tap/index.html', level: 'B' },
           { name: 'TSLP', fullName: 'ACM Transactions on Speech and Language (2013年已停刊)', url: 'https://dblp.uni-trier.de/db/journals/tslp/index.html', level: 'B' },
-          { name: 'AAMAS', fullName: 'Autonomous Agents and Multi-Agent Systems', url: 'https://dblp.uni-trier.de/db/journals/aamas/index.html', level: 'B' },
+          { name: 'AAMAS (J)', fullName: 'Autonomous Agents and Multi-Agent Systems', url: 'https://dblp.uni-trier.de/db/journals/aamas/index.html', level: 'B' },
           { name: '', fullName: 'Computational Linguistics', url: 'https://dblp.uni-trier.de/db/journals/coling/index.html', level: 'B' },
           { name: 'CVIU', fullName: 'Computer Vision and Image Understanding', url: 'https://dblp.uni-trier.de/db/journals/cviu/index.html', level: 'B' },
           { name: 'DKE', fullName: 'Data & Knowledge Engineering', url: 'https://dblp.uni-trier.de/db/journals/dke/index.html', level: 'B' },
@@ -738,7 +740,7 @@ export function getSampleData() {
           { name: 'IJHCS', fullName: 'International Journal of Human-Computer Studies', url: 'https://dblp.uni-trier.de/db/journals/ijmms/index.html', level: 'A' }
         ],
         B: [
-          { name: 'CSCW', fullName: 'Computer Supported Cooperative Work', url: 'https://dblp.uni-trier.de/db/journals/cscw/index.html', level: 'B' },
+          { name: 'CSCW (J)', fullName: 'Computer Supported Cooperative Work', url: 'https://dblp.uni-trier.de/db/journals/cscw/index.html', level: 'B' },
           { name: 'HCI', fullName: 'Human-Computer Interaction', url: 'https://dblp.uni-trier.de/db/journals/hhci/index.html', level: 'B' },
           { name: '', fullName: 'IEEE Transactions on Human-Machine Systems', url: 'https://dblp.uni-trier.de/db/journals/thms/index.html', level: 'B' },
           { name: 'IWC', fullName: 'Interacting with Computers', url: 'https://dblp.uni-trier.de/db/journals/iwc/index.html', level: 'B' },
@@ -808,7 +810,7 @@ export function getSampleData() {
           { name: 'JAMIA', fullName: 'Journal of the American Medical Informatics Association', url: 'https://dblp.uni-trier.de/db/journals/jamia/index.html', level: 'B' },
           { name: '', fullName: 'PLOS Computational Biology', url: 'https://dblp.uni-trier.de/db/journals/ploscb/index.html', level: 'B' },
           { name: '', fullName: 'The Computer Journal', url: 'https://dblp.uni-trier.de/db/journals/cj/index.html', level: 'B' },
-          { name: 'WWW', fullName: 'World Wide Web', url: 'https://dblp.org/db/journals/www/index.html', level: 'B' },
+          { name: 'WWW (J)', fullName: 'World Wide Web', url: 'https://dblp.org/db/journals/www/index.html', level: 'B' },
           { name: 'FCS', fullName: 'Frontiers of Computer Science', url: 'https://dblp.uni-trier.de/db/journals/fcsc/index.html', level: 'B' }
         ],
         C: [
@@ -857,6 +859,25 @@ export function getSampleData() {
       }
     }
   }
+  
+  // 遍历所有分类和类型，为每个条目添加thcpl字段
+  Object.keys(data).forEach(categoryKey => {
+    const category = data[categoryKey]
+    ;['conference', 'journal'].forEach(type => {
+      ;['A', 'B', 'C'].forEach(level => {
+        if (category[type] && category[type][level]) {
+          category[type][level].forEach(item => {
+            const thcplLevel = getThcplLevel(item.name)
+            if (thcplLevel) {
+              item.thcpl = thcplLevel
+            }
+          })
+        }
+      })
+    })
+  })
+  
+  return data
 }
 
 // 解析HTML文件中的数据（保留用于未来扩展）
